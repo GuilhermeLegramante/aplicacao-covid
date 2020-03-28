@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Cadastro de Colaborador</title>
+    <title>Sistema de Colaboração</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/login.css">
@@ -24,10 +24,10 @@
             <br>
             <form id="form-login" onclick="#">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="inputUsuario" placeholder="Seu nome de usuário" name="usuario">
+                    <input type="text" class="form-control" id="inputUsuario" placeholder="Seu nome de usuário" name="usuario" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" id="inputSenha" placeholder="Sua senha" name="senha">
+                    <input type="password" class="form-control" id="inputSenha" placeholder="Sua senha" name="senha" required>
                 </div>
                 <button class="btn btn-primary btn-block">Acessar</button>
                 <br><br>

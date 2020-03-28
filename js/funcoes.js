@@ -41,7 +41,52 @@ $(document).ready(function() {
         });
     });
 
+    var password = document.getElementById("inputSenha"),
+        confirm_password = document.getElementById("inputConfirmaSenha");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Senhas diferentes!");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+
 });
+
+function buscaCep() {
+    $.ajax({
+        type: "POST",
+        url: "http://" + window.location.host + "/webpatrimonio/sistemacontracheque/api/carregadadosempresa",
+        success: function(result, jqXHR) {
+            var clientes = JSON.parse(result);
+            $.each(clientes, function(i, cliente) {
+                var item = cliente.SUCESSO;
+                if (item == "0") {
+                    swal({
+                        text: "Os dados da empresa não foram encontrados",
+                        icon: "error",
+                        closeOnClickOutside: false,
+                        closeOnEsc: false,
+                    });
+                } else {
+                    $("#nomeempresa").html(cliente.NOMEEMPRESA);
+                }
+            });
+        },
+        error: function(jqXHR, status) {
+            swal({
+                text: "Não foi possível contatar o servidor",
+                icon: "error",
+                closeOnClickOutside: false,
+                closeOnEsc: false,
+            });
+        },
+    });
+}
 
 function verificaLogin() {
     var token = localStorage.getItem("token");
