@@ -2,10 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>Painel Administrativo</title>
+    <title>Sistema de Colaboração</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/login.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -16,15 +15,19 @@
     <script src="js/sweetalert.min.js"></script>
 </head>
 
-<body onload="verificaLogin()">
-
-    <div class="container">
-        <h2>Painel Administrativo</h2>
-        <a href="sair.php">
-            <h5>Sair</h5>
-        </a>
+<body>
+    <div class="corpo-form">
+        <div class="container">
+            <h2 style="text-align: center;">Erro no cadastro, tente novamente!</h2>
+            <br>
+            <a href="index.php">
+                <h5>Voltar</h5>
+            </a>
+            <a href="sair.php">
+                <h5>Sair</h5>
+            </a>
+        </div>
     </div>
-
 </body>
 
 </html>

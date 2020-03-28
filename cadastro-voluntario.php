@@ -101,7 +101,7 @@
         <br>
         <h2 style="text-align: center;">Cadastro de Voluntário</h2>
         <br>
-        <form id="form-voluntario" method="POST" action="controller/CadastroVoluntarioController.php">
+        <form id="form-voluntario" method="POST" action="controller/CadastroVoluntarioController.php" enctype="multipart/form-data">
             <div class="">
                 <div class="row">
                     <div class="col-md-6">
@@ -118,30 +118,42 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="senha">Senha</label>
                             <input type="password" class="form-control" id="inputSenha" placeholder="Senha" name="senha" required>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="confirmaSenha">Confirme a senha</label>
                             <input type="password" class="form-control" id="inputConfirmaSenha" placeholder="Confirme a senha" name="confirmaSenha" required>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input class="form-control" placeholder="telefone" name="telefone" type="number" id="telefone" required />
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="cep">CEP</label>
                             <input class="form-control" name="cep" placeholder="CEP" type="text" id="cep" value="" size="10" maxlength="9" required />
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="rua">Rua</label>
                             <input class="form-control" placeholder="Rua" name="rua" type="text" id="rua" size="60" required />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="numero">Número</label>
+                            <input class="form-control" placeholder="Número" name="numero" type="text" id="numero" size="40" required />
                         </div>
                     </div>
                 </div>
@@ -152,6 +164,7 @@
                             <input class="form-control" placeholder="Bairro" name="bairro" type="text" id="bairro" size="40" required />
                         </div>
                     </div>
+
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="cidade">Cidade</label>
@@ -165,6 +178,27 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Identidade</label>
+                            <input type="number" value="Procurar" class="form-control" placeholder="número identidade" name="identidade" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Foto da Identidade*</label>
+                            <input type="file" value="Procurar" class="form-control" placeholder="foto da identidade" name="fotoIdentidade" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Foto de verificação**</label>
+                            <input type="file" value="Procurar" class="form-control" placeholder="foto de verificação" name="fotoVerificacao" required>
+                        </div>
+                    </div>
+                </div>
+
                 <label for="1km">Raio de atuação</label>
                 <div class="row">
                     <div class="col-md-2">
@@ -183,7 +217,9 @@
                         <label class="radio-inline"><input type="radio" name="raioAtuacao" value="max"> Mais de 10km</label>
                     </div>
                 </div>
-
+                <br>
+                <h6>* Envie uma foto legível do seu documento de identidade.</h6>
+                <h6>** Envie uma foto sua segurando seu documento de identidade.</h6>
                 <br>
                 <a href="index.php" class="btn btn-primary" role="button">Voltar</a>
                 <button type="submit" class="btn btn-success">Cadastrar</button>

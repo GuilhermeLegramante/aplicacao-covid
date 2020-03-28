@@ -24,7 +24,7 @@
             <br>
             <form id="form-login" onclick="#">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="inputUsuario" placeholder="Seu nome de usuário" name="usuario" required>
+                    <input type="text" class="form-control" id="inputEmail" placeholder="Seu email" name="email" required>
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" id="inputSenha" placeholder="Sua senha" name="senha" required>

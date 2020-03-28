@@ -22,7 +22,6 @@ $rua = $_POST['rua'];
 $bairro = $_POST['bairro'];
 $cidade = $_POST['cidade'];
 $uf = $_POST['uf'];
-$raioAtuacao = $_POST['raioAtuacao'];
 $identidade = $_POST['identidade'];
 
 if (isset($_FILES['fotoIdentidade']) && isset($_FILES['fotoVerificacao'])) {
@@ -45,9 +44,9 @@ if (isset($_FILES['fotoIdentidade']) && isset($_FILES['fotoVerificacao'])) {
 }
 
 try {
-    $stmt = $pdo->prepare("INSERT INTO voluntarios (nome, email, senha, telefone, cep, rua, numero, bairro,
-    cidade, uf, raioAtuacao, identidade, fotoDoc, fotoVerificacao) VALUES(:nome, :email, :senha, :telefone, 
-    :cep, :rua, :numero, :bairro, :cidade, :uf, :raioAtuacao, :identidade, :fotoDoc, :fotoVerificacao)");
+    $stmt = $pdo->prepare("INSERT INTO vulneraveis (nome, email, senha, telefone, cep, rua, numero, bairro,
+    cidade, uf, identidade, fotoDoc, fotoVerificacao) VALUES(:nome, :email, :senha, :telefone, 
+    :cep, :rua, :numero, :bairro, :cidade, :uf, :identidade, :fotoDoc, :fotoVerificacao)");
     $stmt->bindValue(":nome", $nome);
     $stmt->bindValue(":email", $email);
     $stmt->bindValue(":senha", $senhaCrip);
@@ -58,7 +57,6 @@ try {
     $stmt->bindValue(":bairro", $bairro);
     $stmt->bindValue(":cidade", $cidade);
     $stmt->bindValue(":uf", $uf);
-    $stmt->bindValue(":raioAtuacao", $raioAtuacao);
     $stmt->bindValue(":identidade", $identidade);
     $stmt->bindValue(":fotoDoc", $fotoIdentidade);
     $stmt->bindValue(":fotoVerificacao", $fotoVerificacao);

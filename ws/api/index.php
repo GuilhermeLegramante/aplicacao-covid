@@ -14,29 +14,29 @@ $app->post('/login', function () use ($app) {
 
     $retorno = array();
     global $pdo;
-    $nome = "covid19";
+    $nomeDb = "covid19";
     $host = "localhost";
     $user = "root";
     $pass = "";
 
     try {
-        $pdo = new PDO("mysql:dbname=" . $nome . ";host=" . $host, $user, $pass);
+        $pdo = new PDO("mysql:dbname=" . $nomeDb . ";host=" . $host, $user, $pass);
     } catch (PDOException $e) {
         $msgErro = $e->getMessage();
     }
 
-    $usuario = $req->post('usuario');
+    $email = $req->post('email');
     $senha = $req->post('senha');
 
-    $sql = $pdo->prepare("SELECT * FROM usuarios WHERE usuario = :u AND senha = :s");
-    $sql->bindValue(":u", $usuario);
+    $sql = $pdo->prepare("SELECT * FROM voluntarios WHERE email = :e AND senha = :s");
+    $sql->bindValue(":e", $email);
     $sql->bindValue(":s", $senha);
     $sql->execute();
 
     if ($sql->rowCount() > 0) {
         $dados = $sql->fetch();
         session_start();
-        $_SESSION['logado'] = $dados['usuario'];
+        $_SESSION['logado'] = $dados['nome'];
 
         $registro = array(
             "TOKEN" => $dados['idusuario'],
@@ -49,12 +49,9 @@ $app->post('/login', function () use ($app) {
         );
         $retorno[] = $registro;
     }
-    //$pdo->close();
+
     echo json_encode($retorno);
 });
-
-
-
 
 
 $app->run();

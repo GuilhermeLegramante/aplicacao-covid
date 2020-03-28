@@ -4,7 +4,7 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             url: "http://" + window.location.host + "/covid19/covid19/ws/api/login",
-            data: { usuario: $("#inputUsuario").val(), senha: $("#inputSenha").val() },
+            data: { usuario: $("#inputEmail").val(), senha: $("#inputSenha").val() },
             beforeSend: function() {
                 var p = document.createElement("p");
                 p.innerHTML = "<h2>Aguarde...</h2>";
@@ -57,36 +57,6 @@ $(document).ready(function() {
 
 });
 
-function buscaCep() {
-    $.ajax({
-        type: "POST",
-        url: "http://" + window.location.host + "/webpatrimonio/sistemacontracheque/api/carregadadosempresa",
-        success: function(result, jqXHR) {
-            var clientes = JSON.parse(result);
-            $.each(clientes, function(i, cliente) {
-                var item = cliente.SUCESSO;
-                if (item == "0") {
-                    swal({
-                        text: "Os dados da empresa não foram encontrados",
-                        icon: "error",
-                        closeOnClickOutside: false,
-                        closeOnEsc: false,
-                    });
-                } else {
-                    $("#nomeempresa").html(cliente.NOMEEMPRESA);
-                }
-            });
-        },
-        error: function(jqXHR, status) {
-            swal({
-                text: "Não foi possível contatar o servidor",
-                icon: "error",
-                closeOnClickOutside: false,
-                closeOnEsc: false,
-            });
-        },
-    });
-}
 
 function verificaLogin() {
     var token = localStorage.getItem("token");
