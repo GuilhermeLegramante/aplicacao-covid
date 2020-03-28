@@ -31,8 +31,8 @@ if (isset($_FILES['fotoIdentidade']) && isset($_FILES['fotoVerificacao'])) {
     $extIdt = strtolower(substr($_FILES['fotoIdentidade']['name'], -4)); //Pegando extensão do arquivo
     $extVer = strtolower(substr($_FILES['fotoVerificacao']['name'], -4)); //Pegando extensão do arquivo
 
-    $new_name_idt = "idt_" . $identidade . $extIdt; //Definindo um novo nome para o arquivo
-    $new_name_ver = "ver_" . $identidade . $extVer; //Definindo um novo nome para o arquivo
+    $new_name_idt = "voluntario_idt_" . $identidade . $extIdt; //Definindo um novo nome para o arquivo
+    $new_name_ver = "voluntario_ver_" . $identidade . $extVer; //Definindo um novo nome para o arquivo
 
     $fotoIdentidade = $new_name_idt;
     $fotoVerificacao = $new_name_ver;
