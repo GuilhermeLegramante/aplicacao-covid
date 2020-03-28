@@ -4,7 +4,7 @@ require 'Slim/Slim.php';
 $app = new \Slim\Slim();
 
 $app->get('/', function () {
-    echo "Bem-vindo a API do Sistema de Clientes";
+    echo "Bem-vindo a API do Sistema COVID19";
 });
 
 $GLOBALS["db"] = "covid19";

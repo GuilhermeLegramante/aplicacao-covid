@@ -45,9 +45,10 @@ if (isset($_FILES['fotoIdentidade']) && isset($_FILES['fotoVerificacao'])) {
 }
 
 try {
-    $stmt = $pdo->prepare("INSERT INTO voluntarios (nome, email, senha, telefone, cep, rua, numero, bairro,
-    cidade, uf, raioAtuacao, identidade, fotoDoc, fotoVerificacao) VALUES(:nome, :email, :senha, :telefone, 
+    $stmt = $pdo->prepare("INSERT INTO voluntarios (cadValidado, nome, email, senha, telefone, cep, rua, numero, bairro,
+    cidade, uf, raioAtuacao, identidade, fotoDoc, fotoVerificacao) VALUES(:cadValidado, :nome, :email, :senha, :telefone, 
     :cep, :rua, :numero, :bairro, :cidade, :uf, :raioAtuacao, :identidade, :fotoDoc, :fotoVerificacao)");
+    $stmt->bindValue(":cadValidado", 0);
     $stmt->bindValue(":nome", $nome);
     $stmt->bindValue(":email", $email);
     $stmt->bindValue(":senha", $senhaCrip);
