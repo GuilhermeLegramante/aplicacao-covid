@@ -12,10 +12,10 @@ try {
   $msgErro = $e->getMessage();
 }
 
-$email = "guilhermelegramante@gmail.com";
+$cpf = "01785929003";
 
-$sql = $pdo->prepare("SELECT bairro FROM voluntarios WHERE email = :e");
-$sql->bindValue(":e", $email);
+$sql = $pdo->prepare("SELECT bairro FROM voluntarios WHERE cpf = :e");
+$sql->bindValue(":e", $cpf);
 $sql->execute();
 
 if ($sql->rowCount() > 0) {

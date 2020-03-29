@@ -20,31 +20,31 @@
     <div class="container" style="padding-top: 5%;text-align: center;">
         <h1>Rede de solidadariedade - COVID-19</h1>
     </div>
-
+  
     <div class="container" style="margin-top: 5%; max-width: 40%; align-items: center;">
-        <h2 style="text-align: center;">Login</h2>
+        <h2 style="text-align: center;">Login - Vulnerável</h2>
 
         <br>
-        
-            <div class="col-md-12 align-self-center text-center">
-                <a href="login-voluntario.php" class="btn btn-info" role="button">Sou Voluntário</a>
-                <a href="login-vulneravel.php" class="btn btn-info" role="button">Sou Vulnerável</a>
+        <form id="form-login-vulneravel" onclick="#">
+            <div class="form-group">
+                <input type="text" class="form-control" id="inputCPF" placeholder="CPF (apenas números)" maxlength="14" required>
             </div>
-
+            <div class="form-group">
+                <input type="password" class="form-control" id="inputSenha" placeholder="Sua senha" required>
+            </div>
+            <button class="btn btn-primary btn-block">Acessar</button>
             <br><br>
             <div class="col-md-12 align-self-center text-center">
-                <h4>Não possui cadastro?</h4>
-                <a style="margin-right: 5%;" href="cadastro-voluntario.php">Cadastrar voluntário</a>
-                <a href="cadastro-vulneravel.php">Cadastrar vulnerável</a>
+                <a href="index.php">Voltar</a>
             </div>
             <br><br><br><br>
-            <div class="col-md-12 align-self-center text-center">
+            <div class="form-group">
                 <img src="img/logo-lesse.png" alt="logo" style="width:25%; margin-left:10%; margin-right: 10%;">
                 <img src="img/unipampa.jpg" alt="logo" style=" width:50%;">
             </div>
-       
+        </form>
     </div>
-
+    
 </body>
 
 </html>

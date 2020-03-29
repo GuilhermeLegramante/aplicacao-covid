@@ -5,6 +5,7 @@ CREATE TABLE voluntarios(
     idvoluntario int AUTO_INCREMENT PRIMARY KEY,
     cadValidado TINYINT,
     nome VARCHAR(45),
+    cpf VARCHAR(11),
     email VARCHAR(30),
     senha VARCHAR(32),
     telefone VARCHAR(20),
@@ -25,6 +26,7 @@ CREATE TABLE vulneraveis(
     idvulneravel int AUTO_INCREMENT PRIMARY KEY,
     cadValidado TINYINT,
     nome VARCHAR(45),
+    cpf VARCHAR(11),
     email VARCHAR(30),
     senha VARCHAR(32),
     telefone VARCHAR(20),
@@ -39,7 +41,6 @@ CREATE TABLE vulneraveis(
     fotoVerificacao VARCHAR(45),
     latitude VARCHAR(30),
     longitude VARCHAR(30)
-
 );
 
 INSERT INTO `usuarios` (`idusuario`, `usuario`, `senha`) VALUES (NULL, 'teste', '202cb962ac59075b964b07152d234b70');

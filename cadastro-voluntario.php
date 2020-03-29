@@ -96,6 +96,9 @@
 </head>
 
 <body>
+    <div class="container" style="padding-top: 5%;text-align: center;">
+        <h1>Rede de solidadariedade - COVID-19</h1>
+    </div>
 
     <div class="container">
         <br>
@@ -104,16 +107,22 @@
         <form id="form-voluntario" method="POST" action="controller/CadastroVoluntarioController.php" enctype="multipart/form-data">
             <div class="">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="usuario">Nome completo</label>
                             <input type="text" class="form-control" id="inputNome" placeholder="Nome completo" name="nome" required>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="usuario">Email</label>
                             <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="usuario">CPF</label>
+                            <input type="number" class="form-control" id="inputCpf" placeholder="CPF" name="cpf" required>
                         </div>
                     </div>
                 </div>
@@ -223,6 +232,11 @@
                 <br>
                 <a href="index.php" class="btn btn-primary" role="button">Voltar</a>
                 <button type="submit" class="btn btn-success">Cadastrar</button>
+                <br><br><br><br>
+                <div class="form-group">
+                    <img src="img/logo-lesse.png" alt="logo" style="width:15%; margin-left:10%; margin-right: 30%;">
+                    <img src="img/unipampa.jpg" alt="logo" style=" width:30%;">
+                </div>
             </div>
     </div>
 

@@ -13,15 +13,18 @@ try {
 }
 
 $nome = $_POST['nome'];
+$cpf = $_POST['cpf'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 $senhaCrip = md5($senha);
 $telefone = $_POST['telefone'];
 $cep = $_POST['cep'];
 $rua = $_POST['rua'];
+$numero = $_POST['numero'];
 $bairro = $_POST['bairro'];
 $cidade = $_POST['cidade'];
 $uf = $_POST['uf'];
+$raioAtuacao = $_POST['raioAtuacao'];
 $identidade = $_POST['identidade'];
 
 if (isset($_FILES['fotoIdentidade']) && isset($_FILES['fotoVerificacao'])) {
@@ -44,10 +47,11 @@ if (isset($_FILES['fotoIdentidade']) && isset($_FILES['fotoVerificacao'])) {
 }
 
 try {
-    $stmt = $pdo->prepare("INSERT INTO vulneraveis (cadValidado, nome, email, senha, telefone, cep, rua, numero, bairro,
-    cidade, uf, identidade, fotoDoc, fotoVerificacao) VALUES(:cadValidado, :nome, :email, :senha, :telefone, 
+    $stmt = $pdo->prepare("INSERT INTO vulneraveis (cadValidado, nome, cpf, email, senha, telefone, cep, rua, numero, bairro,
+    cidade, uf, identidade, fotoDoc, fotoVerificacao) VALUES(:cadValidado, :nome, :cpf, :email, :senha, :telefone, 
     :cep, :rua, :numero, :bairro, :cidade, :uf, :identidade, :fotoDoc, :fotoVerificacao)");
     $stmt->bindValue(":cadValidado", 0);
+    $stmt->bindValue(":cpf", $cpf);
     $stmt->bindValue(":nome", $nome);
     $stmt->bindValue(":email", $email);
     $stmt->bindValue(":senha", $senhaCrip);
