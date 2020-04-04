@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Cadastro de Vulnerável</title>
+    <title>Rede de solidadariedade - COVID-19</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -219,9 +219,9 @@
                     <img src="img/unipampa.jpg" alt="logo" style=" width:30%;">
                 </div>
             </div>
+            </form>
     </div>
-
-    </form>
+    
     </div>
 
 

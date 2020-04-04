@@ -124,11 +124,25 @@ $app->post('/cadastro-voluntario', function () use ($app) {
     $latitude = $req->post('latitude');
     $longitude = $req->post('longitude');
 
+    $files = $req->getUploadedFiles();
+    $fotoIdentidade = $files['fotoIdentidade'];
+    $fotoVerificacao = $files['fotoVerificacao'];
+
+    $dir = '../uploads/';
+
+    if ($fotoIdentidade->getError() === UPLOAD_ERR_OK) {
+        $fotoIdentidade_path = moveUploadedFile($dir, $fotoIdentidade);
+    }
+
+    if ($fotoVerificacao->getError() === UPLOAD_ERR_OK) {
+        $fotoVerificacao_path = moveUploadedFile($dir, $fotoVerificacao);
+    }
+
 
     try {
         $stmt = $pdo->prepare("INSERT INTO voluntarios (cadValidado, nome, cpf, email, senha, telefone, cep, rua, numero, bairro,
-        cidade, uf, raioAtuacao, identidade, latitude, longitude) VALUES(:cadValidado, :nome, :cpf, :email, :senha, :telefone, 
-        :cep, :rua, :numero, :bairro, :cidade, :uf, :raioAtuacao, :identidade, :latitude, :longitude)");
+        cidade, uf, raioAtuacao, identidade, fotoDoc, fotoVerificacao, latitude, longitude) VALUES(:cadValidado, :nome, :cpf, :email, :senha, :telefone, 
+        :cep, :rua, :numero, :bairro, :cidade, :uf, :raioAtuacao, :identidade, :fotoDoc, :fotoVerificacao, :latitude, :longitude)");
         $stmt->bindValue(":cadValidado", 0);
         $stmt->bindValue(":cpf", $cpf);
         $stmt->bindValue(":nome", $nome);
@@ -143,6 +157,8 @@ $app->post('/cadastro-voluntario', function () use ($app) {
         $stmt->bindValue(":uf", $uf);
         $stmt->bindValue(":raioAtuacao", $raioAtuacao);
         $stmt->bindValue(":identidade", $identidade);
+        $stmt->bindValue(":fotoDoc", $fotoIdentidade_path);
+        $stmt->bindValue(":fotoVerificacao", $fotoVerificacao_path);
         $stmt->bindValue(":latitude", $latitude);
         $stmt->bindValue(":longitude", $longitude);
         $stmt->execute();
@@ -230,6 +246,10 @@ $app->post('/cadastro-vulneravel', function () use ($app) {
 
     echo json_encode($retorno);
 });
+
+
+
+
 
 
 $app->run();

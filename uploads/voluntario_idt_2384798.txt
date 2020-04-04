@@ -1,0 +1,101 @@
+CREATE DATABASE senior;
+
+USE senior;
+
+CREATE TABLE usuarios(
+	id_usuario int AUTO_INCREMENT PRIMARY KEY,
+    nome varchar(45),
+    tipo ENUM('1','2'),
+    usuario varchar(30),
+    senha varchar(32)
+);
+
+CREATE TABLE produto (
+  `codigo` INT NOT NULL AUTO_INCREMENT,
+  `descricao` LONGTEXT NOT NULL,
+  `preco` FLOAT NULL,
+  PRIMARY KEY (`codigo`)
+);
+
+CREATE TABLE documento(
+	numero varchar(50) PRIMARY KEY,
+	total float,
+	confirmado tinyint
+
+);
+
+CREATE TABLE item(
+	produto int,
+	documento varchar(50),
+	CONSTRAINT fk_produto
+    		FOREIGN KEY (produto)
+    		REFERENCES senior.produto(codigo),
+	CONSTRAINT fk_documento
+    		FOREIGN KEY (documento)
+    		REFERENCES senior.documento(documento),
+	PRIMARY KEY (produto, documento)
+);
+	
+
+
+INSERT INTO usuarios (nome, tipo, usuario, senha)
+VALUES ('Guilherme', '2', 'guilherme', 'e10adc3949ba59abbe56e057f20f883e');
+
+INSERT INTO `usuarios` (`id_usuario`, `nome`, `tipo`, `usuario`, `senha`) VALUES (NULL, 'Vendedor', '1', 'vendedor', 'c33367701511b4f6020ec61ded352059');
+
+
+
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+
+
+-- -----------------------------------------------------
+-- Table `senior`.`Produto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `senior`.`Produto` (
+  `codigo` INT NOT NULL AUTO_INCREMENT,
+  `descricao` LONGTEXT NOT NULL,
+  `preco` FLOAT NULL,
+  PRIMARY KEY (`codigo`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `senior`.`Documento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `senior`.`Documento` (
+  `numero` INT NOT NULL AUTO_INCREMENT,
+  `total` FLOAT NULL,
+  `confirmado` TINYINT NULL,
+  PRIMARY KEY (`numero`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `senior`.`Item`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `senior`.`Item` (
+  `Produto_codigo` INT NOT NULL,
+  `Documento_numero` INT NOT NULL,
+  PRIMARY KEY (`Produto_codigo`, `Documento_numero`),
+  INDEX `fk_Item_Documento1_idx` (`Documento_numero` ASC),
+  CONSTRAINT `fk_Item_Produto`
+    FOREIGN KEY (`Produto_codigo`)
+    REFERENCES `senior`.`Produto` (`codigo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Item_Documento1`
+    FOREIGN KEY (`Documento_numero`)
+    REFERENCES `senior`.`Documento` (`numero`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

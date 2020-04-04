@@ -28,7 +28,8 @@ $uf = $_POST['uf'];
 $raioAtuacao = $_POST['raioAtuacao'];
 $identidade = $_POST['identidade'];
 
-if (isset($_FILES['fotoIdentidade']) && isset($_FILES['fotoVerificacao'])) {
+/*
+    if (isset($_FILES['fotoIdentidade']) && isset($_FILES['fotoVerificacao'])) {
     date_default_timezone_set("Brazil/East"); //Definindo timezone padrão
 
     $extIdt = strtolower(substr($_FILES['fotoIdentidade']['name'], -4)); //Pegando extensão do arquivo
@@ -44,6 +45,23 @@ if (isset($_FILES['fotoIdentidade']) && isset($_FILES['fotoVerificacao'])) {
 
     move_uploaded_file($_FILES['fotoIdentidade']['tmp_name'], $dir . $new_name_idt); //Fazer upload do arquivo
     move_uploaded_file($_FILES['fotoVerificacao']['tmp_name'], $dir . $new_name_ver); //Fazer upload do arquivo
+
+}
+
+*/
+
+if (isset($_FILES['fotoIdentidade'])) {
+    date_default_timezone_set("Brazil/East"); //Definindo timezone padrão
+
+    $extIdt = strtolower(substr($_FILES['fotoIdentidade']['name'], -4)); //Pegando extensão do arquivo
+
+    $new_name_idt = "voluntario_idt_" . $identidade . $extIdt; //Definindo um novo nome para o arquivo
+
+    $fotoIdentidade = $new_name_idt;
+
+    $dir = '../uploads/'; //Diretório para uploads
+
+    move_uploaded_file($_FILES['fotoIdentidade']['tmp_name'], $dir . $new_name_idt); //Fazer upload do arquivo
 
 }
 
@@ -66,7 +84,7 @@ try {
     $stmt->bindValue(":raioAtuacao", $raioAtuacao);
     $stmt->bindValue(":identidade", $identidade);
     $stmt->bindValue(":fotoDoc", $fotoIdentidade);
-    $stmt->bindValue(":fotoVerificacao", $fotoVerificacao);
+    $stmt->bindValue(":fotoVerificacao", "");
     $stmt->execute();
 
     header("location: ../sucesso.php");
